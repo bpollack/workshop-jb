@@ -4,7 +4,7 @@ data class MyDate(val year: Int, val month: Int, val dayOfMonth: Int) : Comparab
     override fun compareTo(other: MyDate): Int {
         val first = array(year, month, dayOfMonth)
         val second = array(other.year, other.month, other.dayOfMonth)
-        for (idx in 0..2) {
+        for (idx in first.indices) {
             if (first[idx] < second[idx]) return -1
             if (first[idx] > second[idx]) return 1
         }
