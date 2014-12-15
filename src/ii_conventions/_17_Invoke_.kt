@@ -30,7 +30,15 @@ fun testTypeWithInvokeExtension() {
     1() //huh?..
 }
 
-class Invokable
+class Invokable {
+    var invoked = 0
+    fun invoke(): Invokable {
+        invoked += 1
+        return this
+    }
+
+    fun getNumberOfInvocations() = invoked
+}
 
 fun todoTask17() = TODO(
     """
@@ -41,6 +49,5 @@ fun todoTask17() = TODO(
     references = {(invokable: Invokable) -> })
 
 fun task17(invokable: Invokable): Int {
-    todoTask17()
-//    return invokable()()()().getNumberOfInvocations()
+    return invokable()()()().getNumberOfInvocations()
 }
